@@ -1,0 +1,15 @@
+from transformers import pipeline
+
+summarizer = pipeline("summarization", model="facebook/bart-large-cnn")
+
+text = """Taylor Alison Swift (born December 13, 1989) is an American singer-songwriter. Her versatile artistry, songwriting, and entrepreneurship have influenced the music industry,
+popular culture, and politics, and her life is a subject of widespread media coverage.
+Swift began professional songwriting at 14 and signed with Big Machine Records in 2005 to become a country singer.
+She released six studio albums under the label, four of them to country radio, starting with Taylor Swift (2006).
+Her next, Fearless (2008), explored country pop, and its singles "Love Story" and "You Belong with Me" catapulted her to mainstream fame.
+Speak Now (2010) infused rock influences, while Red (2012) experimented with electronic elements and featured Swift's first Billboard Hot 100 number-one song,
+"We Are Never Ever Getting Back Together". She departed from her country image with 1989 (2014), a synth-pop album supported by the chart-topping songs"Shake It Off",
+"Blank Space", and "Bad Blood". Media scrutiny inspired the hip-hop-influenced Reputation (2017) and its number-one single "Look What You Made Me Do".
+"""
+
+print(summarizer(text, max_length=130, min_length=30, do_sample=False))
